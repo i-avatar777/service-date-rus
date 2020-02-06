@@ -30,7 +30,7 @@ class DateRus {
                     $v = self::formatMesStr3($date);
                     break;
                 case 'V':
-                    $v = self::formatMesStr3($date);
+                    $v = self::formatIsSvyat($date);
                     break;
                 case 'x':
                     $v = self::formatElement($date);
