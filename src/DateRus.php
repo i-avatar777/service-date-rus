@@ -4,22 +4,42 @@ namespace iAvatar777\services\DateRus;
 
 
 class DateRus {
-    
+
     public static function format ($format, $date = null) {
         if (is_null($date)) $date = time();
 
         $formatTable = [
-            'b' => self::formatLeto($date),
-            'k' => self::formatMesStr($date),
-            'K' => self::formatMesStr3($date),
-            'V' => self::formatIsSvyat($date),
-            'x' => self::formatElement($date),
-            'X' => self::formatImage($date),
+            'b',
+            'k',
+            'K',
+            'V',
+            'x',
+            'X',
         ];
 
         $f = $format;
-        foreach ($formatTable as $k => $function) {
-            $f = str_replace($k, $function($date), $f);
+        foreach ($formatTable as $k) {
+            switch ($k) {
+                case 'b':
+                    $v = self::formatLeto($date);
+                    break;
+                case 'k':
+                    $v = self::formatMesStr($date);
+                    break;
+                case 'K':
+                    $v = self::formatMesStr3($date);
+                    break;
+                case 'V':
+                    $v = self::formatMesStr3($date);
+                    break;
+                case 'x':
+                    $v = self::formatElement($date);
+                    break;
+                case 'X':
+                    $v = self::formatImage($date);
+                    break;
+            }
+            $f = str_replace($k, $v, $f);
         }
 
         return date($f, $date);
