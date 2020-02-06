@@ -2,7 +2,7 @@
     "name": "i-avatar777/service-date-rus",
     "version": "1.0.0",
     "type": "library",
-    "description": "Сервис для форматирование дат с поддержкой русского календаря",
+    "description": "Сервис для форматирования дат с поддержкой русского календаря",
     "homepage": "https://github.com/i-avatar777/service-date-rus",
     "license": "MIT",
     "require": {
