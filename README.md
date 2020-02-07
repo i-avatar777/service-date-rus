@@ -48,7 +48,7 @@ echo DateRus::format('b/Y');
 
 ## Ссылки
 
-Славяно-Арийский Календарь
+Русский Славяно-Арийский Календарь
 http://energodar.net/ha-tha.php?str=vedy%2Fkalendar 
 
 Функция date
