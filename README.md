@@ -39,7 +39,6 @@ composer require i-avatar777/service-date-rus
 use iAvatar777\services\DateRus\DateRus;
 
 echo DateRus::format('b/Y');
-
 ```
 Выдаст
 ```
