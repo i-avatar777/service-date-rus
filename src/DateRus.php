@@ -5,7 +5,14 @@ namespace iAvatar777\services\DateRus;
 
 class DateRus {
 
-    public static function format ($format, $date = null) {
+    /**
+     * @param $format
+     * @param null $date
+     * @param array $options
+     *               - day - int - день месяца рус
+     * @return false|string
+     */
+    public static function format ($format, $date = null, $options = []) {
         if (is_null($date)) $date = time();
 
         $formatTable = [
@@ -15,6 +22,7 @@ class DateRus {
             'V',
             'x',
             'X',
+            'C',
         ];
 
         $f = $format;
@@ -38,11 +46,23 @@ class DateRus {
                 case 'X':
                     $v = self::formatImage($date);
                     break;
+                case 'C':
+                    $v = self::formatDayRus($date, $options);
+                    break;
             }
             $f = str_replace($k, $v, $f);
         }
 
         return date($f, $date);
+    }
+
+    public static function formatDayRus($date, $options = [])
+    {
+        if (isset($options['day'])) {
+            return $options['day'];
+        }
+
+        return 0;
     }
 
     public static function formatImage($date)
