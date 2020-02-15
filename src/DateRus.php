@@ -7,7 +7,7 @@ class DateRus {
 
     /**
      * @param $format
-     * @param null $date
+     * @param null | int $date
      * @param array $options
      *               - day - int - день месяца рус
      * @return false|string
