@@ -7,13 +7,14 @@ class DateRus {
 
     /**
      * @param $format
-     * @param null | int $date
+     * @param int | \DateTime $date
      * @param array $options
      *               - day - int - день месяца рус
      * @return false|string
      */
     public static function format ($format, $date = null, $options = []) {
         if (is_null($date)) $date = time();
+        if ($date instanceof \DateTime) (int)$date = $date->format('U');
 
         $formatTable = [
             'b',
