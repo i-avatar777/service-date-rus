@@ -14,7 +14,7 @@ class DateRus {
      */
     public static function format ($format, $date = null, $options = []) {
         if (is_null($date)) $date = time();
-        if ($date instanceof \DateTime) (int)$date = $date->format('U');
+        if ($date instanceof \DateTime) $date = (int)$date->format('U');
 
         $formatTable = [
             'b',
