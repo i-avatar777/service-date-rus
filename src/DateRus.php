@@ -15,6 +15,14 @@ class DateRus {
     public static function format ($format, $date = null, $options = []) {
         if (is_null($date)) $date = time();
         if ($date instanceof \DateTime) $date = (int)$date->format('U');
+        if (is_string($date)) {
+            if (strpos($date, '-') === false) {
+
+            } else {
+                $f = new \DateTime($date);
+                $date = (int)$f->format('U');
+            }
+        }
 
         $formatTable = [
             'b',
