@@ -87,9 +87,6 @@ class DateRus {
         $y2 = (int)($y4/144);
         $y3 = $y4 - ($y2 * 144);
 
-        $element_int = 0;
-        $element_str = '';
-        $Krug_Zizni = $y3;
         $result = $y3 % 16;
         if ($result == 0) $result = 16;
 
@@ -157,10 +154,6 @@ class DateRus {
         $y2 = (int)($y4/144);
         $y3 = $y4 - ($y2 * 144);
 
-        $element_int = 0;
-        $element_str = '';
-        $Krug_Zizni = $y3;
-
         return $y1;
     }
 
@@ -176,10 +169,6 @@ class DateRus {
 
         $y2 = (int)($y4/144);
         $y3 = $y4 - ($y2 * 144);
-
-        $element_int = 0;
-        $element_str = '';
-        $Krug_Zizni = $y3;
 
         return ($y3 % 16 == 0)? 1 : 0;
     }
