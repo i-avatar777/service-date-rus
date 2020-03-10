@@ -249,7 +249,7 @@ class DateRus {
      * @param int $time2
      * @return array
      */
-    public function calc($time2) {
+    public static function calc($time2) {
 
 // Доля 1/1296 Славяно-Арийской Части Часа
         $Dolja_SlavAri = 0;
@@ -587,47 +587,47 @@ class DateRus {
 //
 //	можно теперь и со стихиями определиться (девять залов):
 //
-        if (in_array($Krug_Zizni, [1, 2, 19, 20, 37, 38, 55, 56, 73, 74, 91, 92, 109, 110, 127, 128]) >= 0) {
+        if (in_array($Krug_Zizni, [1, 2, 19, 20, 37, 38, 55, 56, 73, 74, 91, 92, 109, 110, 127, 128])) {
             $Krug = "Земного (Черного)";
             $element_str = "Земного (Черного)";
             $element_int = 1;
         }
-        if (in_array($Krug_Zizni, [129, 130, 3, 4, 21, 22, 39, 40, 57, 58, 75, 76, 93, 94, 111, 112]) >= 0) {
+        if (in_array($Krug_Zizni, [129, 130, 3, 4, 21, 22, 39, 40, 57, 58, 75, 76, 93, 94, 111, 112])) {
             $Krug = "Звездного (Красного)";
             $element_str = "Звездного (Красного)";
             $element_int = 2;
         }
-        if (in_array($Krug_Zizni, [113, 131, 5, 23, 41, 59, 77, 95, 114, 132, 6, 24, 42, 60, 78, 96]) >= 0) {
+        if (in_array($Krug_Zizni, [113, 131, 5, 23, 41, 59, 77, 95, 114, 132, 6, 24, 42, 60, 78, 96])) {
             $Krug = "Огненного (Алого)";
             $element_str = "Огненного (Алого)";
             $element_int = 3;
         }
-        if (in_array($Krug_Zizni, [97, 98, 115, 116, 133, 134, 7, 8, 25, 26, 43, 44, 61, 62, 79, 80]) >= 0) {
+        if (in_array($Krug_Zizni, [97, 98, 115, 116, 133, 134, 7, 8, 25, 26, 43, 44, 61, 62, 79, 80])) {
             $Krug = "Солнечного (Златого)";
             $element_str = "Солнечного (Златого)";
             $element_int = 4;
         }
-        if (in_array($Krug_Zizni, [81, 99, 117, 135, 9, 27, 45, 63, 82, 100, 118, 136, 10, 28, 46, 64]) >= 0) {
+        if (in_array($Krug_Zizni, [81, 99, 117, 135, 9, 27, 45, 63, 82, 100, 118, 136, 10, 28, 46, 64])) {
             $Krug = "Древесного (Зеленого)";
             $element_str = "Древесного (Зеленого)";
             $element_int = 5;
         }
-        if (in_array($Krug_Zizni, [65, 83, 101, 119, 137, 11, 29, 47, 66, 84, 102, 120, 138, 12, 30, 48]) >= 0) {
+        if (in_array($Krug_Zizni, [65, 83, 101, 119, 137, 11, 29, 47, 66, 84, 102, 120, 138, 12, 30, 48])) {
             $Krug = "Свага (Небесного)";
             $element_str = "Свага (Небесного)";
             $element_int = 6;
         }
-        if (in_array($Krug_Zizni, [49, 67, 85, 103, 121, 139, 13, 31, 50, 68, 86, 104, 122, 140, 14, 32]) >= 0) {
+        if (in_array($Krug_Zizni, [49, 67, 85, 103, 121, 139, 13, 31, 50, 68, 86, 104, 122, 140, 14, 32])) {
             $Krug = "Морского (Синего)";
             $element_str = "Морского (Синего)";
             $element_int = 7;
         }
-        if (in_array($Krug_Zizni, [33, 51, 69, 87, 105, 123, 141, 15, 34, 52, 70, 88, 106, 124, 142, 16]) >= 0) {
+        if (in_array($Krug_Zizni, [33, 51, 69, 87, 105, 123, 141, 15, 34, 52, 70, 88, 106, 124, 142, 16])) {
             $Krug = "Лунного (Фиолетового)";
             $element_str = "Лунного (Фиолетового)";
             $element_int = 8;
         }
-        if (in_array($Krug_Zizni, [17, 35, 53, 71, 89, 107, 125, 143, 18, 36, 54, 72, 90, 108, 126, 144]) >= 0) {
+        if (in_array($Krug_Zizni, [17, 35, 53, 71, 89, 107, 125, 143, 18, 36, 54, 72, 90, 108, 126, 144])) {
             $Krug = "Божественного (Белого)";
             $element_str = "Божественного (Белого)";
             $element_int = 9;
@@ -637,82 +637,82 @@ class DateRus {
         $image_int = 0;
         $image_str = '';
 
-        if (in_array($Krug_Zizni, [1, 129, 113, 97, 81, 65, 49, 33, 17]) >= 0) {
+        if (in_array($Krug_Zizni, [1, 129, 113, 97, 81, 65, 49, 33, 17])) {
             $Krug = $Krug . " Странника (Пути) ";
             $image_str = "Странника (Пути)";
             $image_int = 1;
         }
-        if (in_array($Krug_Zizni, [2, 130, 114, 98, 82, 66, 50, 34, 18]) >= 0) {
+        if (in_array($Krug_Zizni, [2, 130, 114, 98, 82, 66, 50, 34, 18])) {
             $Krug = $Krug . " Жреца ";
             $image_str = "Жрец";
             $image_int = 2;
         }
-        if (in_array($Krug_Zizni, [19, 3, 131, 115, 99, 83, 67, 51, 35]) >= 0) {
+        if (in_array($Krug_Zizni, [19, 3, 131, 115, 99, 83, 67, 51, 35])) {
             $Krug = $Krug . " Жрицы (Девы) ";
             $image_str = "Жрица (Дева)";
             $image_int = 3;
         }
-        if (in_array($Krug_Zizni, [20, 4, 132, 116, 100, 84, 68, 52, 36]) >= 0) {
+        if (in_array($Krug_Zizni, [20, 4, 132, 116, 100, 84, 68, 52, 36])) {
             $Krug = $Krug . " Мира (Яви) ";
             $image_str = "Мiр (Явь)";
             $image_int = 4;
         }
-        if (in_array($Krug_Zizni, [37, 21, 5, 133, 117, 101, 85, 69, 53]) >= 0) {
+        if (in_array($Krug_Zizni, [37, 21, 5, 133, 117, 101, 85, 69, 53])) {
             $Krug = $Krug . " Свитока ";
             $image_str = "Свиток";
             $image_int = 5;
         }
-        if (in_array($Krug_Zizni, [38, 22, 6, 134, 118, 102, 86, 70, 54]) >= 0) {
+        if (in_array($Krug_Zizni, [38, 22, 6, 134, 118, 102, 86, 70, 54])) {
             $Krug = $Krug . " Феникса ";
             $image_str = "Феникс";
             $image_int = 6;
         }
-        if (in_array($Krug_Zizni, [55, 39, 23, 7, 135, 119, 103, 87, 71]) >= 0) {
+        if (in_array($Krug_Zizni, [55, 39, 23, 7, 135, 119, 103, 87, 71])) {
             $Krug = $Krug . " Лиса (Навь) ";
             $image_str = "Лис (Навь)";
             $image_int = 7;
         }
-        if (in_array($Krug_Zizni, [56, 40, 24, 8, 136, 120, 104, 88, 72]) >= 0) {
+        if (in_array($Krug_Zizni, [56, 40, 24, 8, 136, 120, 104, 88, 72])) {
             $Krug = $Krug . " Дракона ";
             $image_str = "Дракон";
             $image_int = 8;
         }
-        if (in_array($Krug_Zizni, [73, 57, 41, 25, 9, 137, 121, 105, 89]) >= 0) {
+        if (in_array($Krug_Zizni, [73, 57, 41, 25, 9, 137, 121, 105, 89])) {
             $Krug = $Krug . " Змея ";
             $image_str = "Змей";
             $image_int = 9;
         }
-        if (in_array($Krug_Zizni, [74, 58, 42, 26, 10, 138, 122, 106, 90]) >= 0) {
+        if (in_array($Krug_Zizni, [74, 58, 42, 26, 10, 138, 122, 106, 90])) {
             $Krug = $Krug . " Орла ";
             $image_str = "Орёл";
             $image_int = 10;
         }
-        if (in_array($Krug_Zizni, [91, 75, 59, 43, 27, 11, 139, 123, 107]) >= 0) {
+        if (in_array($Krug_Zizni, [91, 75, 59, 43, 27, 11, 139, 123, 107])) {
             $Krug = $Krug . " Дельфина ";
             $image_str = "Дельфин";
             $image_int = 11;
         }
-        if (in_array($Krug_Zizni, [92, 76, 60, 44, 28, 12, 140, 124, 108]) >= 0) {
+        if (in_array($Krug_Zizni, [92, 76, 60, 44, 28, 12, 140, 124, 108])) {
             $Krug = $Krug . " Коня ";
             $image_str = "Конь";
             $image_int = 12;
         }
-        if (in_array($Krug_Zizni, [109, 93, 77, 61, 45, 29, 13, 141, 125]) >= 0) {
+        if (in_array($Krug_Zizni, [109, 93, 77, 61, 45, 29, 13, 141, 125])) {
             $Krug = $Krug . " Пса ";
             $image_str = "Пёс";
             $image_int = 13;
         }
-        if (in_array($Krug_Zizni, [110, 94, 78, 62, 46, 30, 14, 142, 126]) >= 0) {
+        if (in_array($Krug_Zizni, [110, 94, 78, 62, 46, 30, 14, 142, 126])) {
             $Krug = $Krug . " Тура (быка) ";
             $image_str = "Тур (бык)";
             $image_int = 14;
         }
-        if (in_array($Krug_Zizni, [127, 111, 95, 79, 63, 47, 31, 15, 143]) >= 0) {
+        if (in_array($Krug_Zizni, [127, 111, 95, 79, 63, 47, 31, 15, 143])) {
             $Krug = $Krug . " Хоромы (дом) ";
             $image_str = "Хоромы (дом)";
             $image_int = 15;
         }
-        if (in_array($Krug_Zizni, [128, 112, 96, 80, 64, 48, 32, 16, 144]) >= 0) {
+        if (in_array($Krug_Zizni, [128, 112, 96, 80, 64, 48, 32, 16, 144])) {
             $Krug = $Krug . " Капище (храм) ";
             $image_str = "Капище (храм)";
             $image_int = 16;
