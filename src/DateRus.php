@@ -215,7 +215,11 @@ class DateRus {
         return $m[$m1];
     }
 
-    private function calc($time2) {
+    /**
+     * @param int $time2
+     * @return array
+     */
+    public function calc($time2) {
 
 // Доля 1/1296 Славяно-Арийской Части Часа
         $Dolja_SlavAri = 0;
@@ -261,7 +265,6 @@ class DateRus {
 
 // Чертог, где находится Ярило-Солнце
         $Chertog = "";
-
 
         $today = $time2;
         $mSec_Greg = $today * 1000; // миллисекунд от полночи 1 января 1970 года до "сейчас"

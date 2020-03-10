@@ -1,6 +1,6 @@
 {
     "name": "i-avatar777/service-date-rus",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "type": "library",
     "description": "Сервис для форматирования дат с поддержкой русского календаря",
     "homepage": "https://github.com/i-avatar777/service-date-rus",
