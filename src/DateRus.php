@@ -3,16 +3,19 @@
 namespace iAvatar777\services\DateRus;
 
 
-class DateRus {
+class DateRus
+{
+    // дата вычисленная через calc
+    private static $dateCalc;
 
     public $element = [
-        1 => 'Земля (Чёрный) ',
-        2 => 'Звезда (Красный) ',
-        3 => 'Огонь (Алый) ',
-        4 => 'Солнце (Златый) ',
-        6 => 'Свага (Небесный) ',
-        7 => 'Океан (Синий) ',
-        8 => 'Луна (ФиоЛѣтовый) ',
+        1 => 'Земля (Чёрный)',
+        2 => 'Звезда (Красный)',
+        3 => 'Огонь (Алый)',
+        4 => 'Солнце (Златый)',
+        6 => 'Свага (Небесный)',
+        7 => 'Океан (Синий)',
+        8 => 'Луна (ФиоЛѣтовый)',
         9 => 'Бог (Белый)',
     ];
 
@@ -62,6 +65,9 @@ class DateRus {
             'x',
             'X',
             'C',
+            'E',
+            'f',
+            'J',
         ];
 
         $f = $format;
@@ -86,22 +92,24 @@ class DateRus {
                     $v = self::formatImage($date);
                     break;
                 case 'C':
-                    $v = self::formatDayRus($date, $options);
+                    $v = self::formatDayRus($date);
+                    break;
+                case 'E':
+                    $v = self::formatDayRusNULL($date);
+                    break;
+                case 'f':
+                    // День недели рус от 1 до 9
+                    $v = self::formatDayWeekRus($date);
+                    break;
+                case 'J':
+                    // Месяц рус от 1 до 9
+                    $v = self::formatMesRus($date);
                     break;
             }
             $f = str_replace($k, $v, $f);
         }
 
         return date($f, $date);
-    }
-
-    public static function formatDayRus($date, $options = [])
-    {
-        if (isset($options['day'])) {
-            return $options['day'];
-        }
-
-        return 0;
     }
 
     public static function formatImage($date)
@@ -246,8 +254,98 @@ class DateRus {
     }
 
     /**
+     * Вычисляет День недели рус от 1 до 9
+     *
+     * @param int $date
+     * @return int
+     */
+    public static function formatDayWeekRus($date)
+    {
+        if (is_null(self::$dateCalc)) {
+            self::$dateCalc = self::calc($date);
+        }
+
+        return self::$dateCalc['Dni'];
+    }
+
+    /**
+     * Выдает день месяца русский
+     *
+     * @param int $date
+     * @param array $options
+     * @return int
+     */
+    public static function formatDayRus($date, $options = [])
+    {
+        if (is_null(self::$dateCalc)) {
+            self::$dateCalc = self::calc($date);
+        }
+
+        return self::$dateCalc['Chislo'];
+    }
+
+    /**
+     * Выдает день месяца русский с ведущими нулями
+     *
+     * @param int $date
+     * @return int
+     */
+    public static function formatDayRusNULL($date)
+    {
+        $d = self::formatDayRus($date);
+        if ($d < 10) $d = '0'.$d;
+
+        return $d;
+    }
+
+    /**
+     * Выдает номер месяца русский
+     *
+     * @param int $date
+     * @return int
+     */
+    public static function formatMesRus($date)
+    {
+        if (is_null(self::$dateCalc)) {
+            self::$dateCalc = self::calc($date);
+        }
+
+        return self::$dateCalc['Mes'];
+    }
+
+    /**
+     * Вычисляет параметры для момента $time2
+     *
      * @param int $time2
      * @return array
+     *
+     * Время:
+     *
+     * Dolja - обязательный / int - Доля 1/1296 Славяно-Арийской Части Часа
+     * DoljaFormat - обязательный / string - Доля 1/1296 Славяно-Арийской Части Часа (с ведущими нулями 4 знака всего)
+     * Chasti - обязательный / int - количество (с нулями) Частей (каждая 1/144 Часа) Славяно-Арийского часа
+     * ChastiFormat - обязательный / int - количество (с нулями) Частей (каждая 1/144 Часа) Славяно-Арийского часа (с ведущими нулями 3 знака всего)
+     * Chas - обязательный / int - Час Славяно-Арийский (1/16 суток)
+     * ChasFormat - обязательный / string - Час Славяно-Арийский
+     * JarFormat - обязательный / string - Время суток
+     *
+     * Дата:
+     *
+     * Dni - обязательный / int - день недели (1-9)
+     * DniFormat - обязательный / str - день недели
+     * Chislo - обязательный / int - Число Славяно-Арийского Месяца (в чётный месяц - 40 дней, в нечётный - 41)
+     * Mes - обязательный / int - Славяно-Арийский Месяц (1-9)
+     * MesFormat - обязательный / string - Славяно-Арийский Месяц (РАБГДЭВХТ)
+     * Krug_Let - обязательный / int - Лето в Круге Лет - Круг - 16 Лет = 15 Простых Лет + 1 Священное Лето (все 9 Месяцев по 41 дню)
+     * KrugFormat - обязательный / string - Название Лета ("первое" - Звёздного Храма)
+     * Krug_Zizni - обязательный / int - Лето в Круге Жизни - Цикл 144 Лета = 9 Кругов Лет
+     * S_M_Z_H - обязательный / int - Лето от Сотворения Мира в Звёздном Храме (Победы над Аримами)
+     * Chertog - обязательный / int - Чертог, где находится Ярило-Солнце
+     * ChertogFormat - обязательный / string - Чертог, где находится Ярило-Солнце
+     * Element - обязательный / int - Элемент/цвет года (1-9)
+     * ElementFormat - обязательный / string - Элемент/цвет года
+     * Image - обязательный / int - Образ года (1-16)
+     * ImageFormat - обязательный / string - Образ года
      */
     public static function calc($time2) {
 
@@ -314,13 +412,13 @@ class DateRus {
         $Chas_SlavAri = (int)($Vrem_SlavAri / 5400000.00);
 
         // Славяно-Арийских частей часа (текущих)
-        $Chast_SlavAri = round(($Vrem_SlavAri % 5400000) / 37500.00);
+        $Chast_SlavAri = (int)(($Vrem_SlavAri % 5400000) / 37500.00);
 
         // прошло целых дней от 21 Бейлетъ 7478 от С.М.З.Х. до "сейчас"
-        $Dney_SlavAri = round(1.00 * ($mSec_SlavAri / 86400000));
+        $Dney_SlavAri = (int)(1.00 * ($mSec_SlavAri / 86400000));
 
         // День недели "числом" + "1", чтобы Понедельникъ был "1", а не "0" и Вторникъ - "2" т.д.
-        $Den_SlavAri = 1 + round($Dney_SlavAri % 9.00);
+        $Den_SlavAri = 1 + (int)($Dney_SlavAri % 9.00);
 
         //
         if ($Den_SlavAri == 1) $Dni = "<b>Понедельникъ</b><br> 1 день недели<br>день Земли-Хорса (Меркурия)";
