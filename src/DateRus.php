@@ -92,7 +92,7 @@ class DateRus
                     $v = self::formatImage($date);
                     break;
                 case 'C':
-                    $v = self::formatDayRus($date);
+                    $v = self::formatDayRus($date, $options);
                     break;
                 case 'E':
                     $v = self::formatDayRusNULL($date);
@@ -276,6 +276,22 @@ class DateRus
      * @return int
      */
     public static function formatDayRus($date, $options = [])
+    {
+        if (isset($options['day'])) {
+            return $options['day'];
+        }
+
+        return 0;
+    }
+
+    /**
+     * Выдает день месяца русский
+     *
+     * @param int $date
+     * @param array $options
+     * @return int
+     */
+    public static function formatDayRus2($date, $options = [])
     {
         if (is_null(self::$dateCalc)) {
             self::$dateCalc = self::calc($date);
