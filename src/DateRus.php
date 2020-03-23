@@ -868,5 +868,3 @@ class DateRus
     }
 
 }
-
-?>
