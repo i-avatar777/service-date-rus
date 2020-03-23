@@ -181,7 +181,7 @@ class DateRus
 
     public static function formatLeto($date)
     {
-        $y = date('Y');
+        $y = date('Y', $date);
         $y = (int)$y;
         $y1 = $y + 5508;
         if (date('m') >= 9 && date('d') >= 21) {
