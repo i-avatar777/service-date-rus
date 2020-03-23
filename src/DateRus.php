@@ -184,7 +184,7 @@ class DateRus
         $y = date('Y', $date);
         $y = (int)$y;
         $y1 = $y + 5508;
-        if (date('m') >= 9 && date('d') >= 21) {
+        if (date('m', $date) >= 9 && date('d', $date) >= 21) {
             $y1++;
         }
         $y4 = $y1 - (7376 - (144*20) );
@@ -192,7 +192,7 @@ class DateRus
         $y2 = (int)($y4/144);
         $y3 = $y4 - ($y2 * 144);
 
-        return $y1;
+        return $y4;
     }
 
     public static function formatIsSvyat($date)
